@@ -1,0 +1,3 @@
+$(function () {
+	$('#zoozler-copyright').zoozlerfy();
+})
