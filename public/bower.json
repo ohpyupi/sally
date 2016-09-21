@@ -1,0 +1,17 @@
+{
+  "name": "public",
+  "homepage": "https://github.com/ohpyupi/sally",
+  "authors": [
+    "ohpyupi <ohpyupi@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "Supergentle",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

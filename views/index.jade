@@ -1,0 +1,82 @@
+doctype html
+html(lang='en')
+	head
+		title Sally
+		link(href='bower_components/bootstrap/dist/css/bootstrap.min.css' rel='stylesheet')
+		link(href='style/less/style.less' rel='stylesheet/less')
+	body
+		section.container-fluid.jumbotron
+			.col-xs-6.col-xs-offset-3
+			h1.text-center Sally
+			p.text-center https://github.com/ohpyupi/sally
+		// jumbotron ending
+		section.container
+			.col-xs-10.col-xs-offset-1
+				h1.display-1 #0 Installation
+				hr
+				p  The easiest way of dowloading and installing Sally is to use
+					a(href='http://bower.io/' target='_blank')  Bower Package Manager.
+					br
+					| After then, place &lt;script> tag linked to sally.js to your html files. 
+				pre
+					code 
+					| bower install sally --save
+					br
+					| &lt;script src='bower_components/sally/dist/js/sally.js'>&lt;/script>
+		section.container
+			.col-xs-10.col-xs-offset-1
+				h1.display-1 
+					| #1 Contact Form
+					small.muted  - vitalizeForm();
+				p One of the most basic functionality of most websites is the contact form functionality. To do that, we have to set up back-end to each websites we build. To avoid repeated set-up for contact form, I made 
+					a(href='http://zoozler.com' target='_blank') zoozler.com 
+					| as an API. So that any websites Zoozler built can communicate with the API and provide all functionality for contact form.
+				hr
+				.example
+					h2
+						small.muted Example
+					.example-con
+						form(method='post')#contact-form
+							.form-group.row
+								label.col-xs-2.col-form-label Name
+								.col-xs-10
+									input(placeholder='Paul Powers').form-control
+							.form-group.row
+								label.col-xs-2.col-form-label E-mail
+								.col-xs-10
+									input(placeholder='ppowers@zoozler.com').form-control
+							.form-group.row
+								label.col-xs-2.col-form-label Phone
+								.col-xs-10
+									input(placeholder='513-123-1234').form-control
+
+							.form-group.row
+								label.col-xs-2.col-form-label Comments
+								.col-xs-10
+									textarea(placeholder='Zoozler is just for you.').form-control
+							button(type='submit').btn.btn-primary.form-control Submit
+		// vitalizeForm() ending
+		// zoozlerfy() starting
+		section.container
+			.col-xs-10.col-xs-offset-1
+				h1.display-1 
+					| #2 Copyright
+					small.muted  - zoozlerfy()
+				hr
+				p Personally, I use gradient colors (red to yellow) to decorate Zoozler's copyright. This work can be boring and annoyting. I made a code snippet that will automatically put gradient color decoration and current year of a date.
+				pre
+					code
+						| // At your html file (index.html)
+						| &lt;h2 id='zoozler-copyright'>Here will be copyright&lt;h2>
+						| // At your javascript file (main.js) 
+						| $('#zoozler-copyright').zoozlerfy();
+				.example
+					h2
+						small.muted Example
+					.example-con
+						h3#zoozler-copyright.text-center Here is Zoozler
+		// zoozlerfy() ending
+		script(src='dist/js/jquery.min.js')
+		script(src='bower_components/less/dist/less.min.js')
+		script(src='dist/js/sally.js')
+		script(src='dist/js/main.js')
