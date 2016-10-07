@@ -74,14 +74,21 @@ html(lang='en' ng-app='MainModule')
 					|   &lt;input name='email' type='text' required>&lt;/input>
 					|   &lt;input name='phone' >&lt;/input>
 					|   &lt;textarea name='message' type='text' required>&lt;/textarea>
+					|   // Google Recaptcha Validation Form 
+					|   &lt;div class='g-recaptcha' data-sitekey='authorized-sitekey-from-google'>&lt;/div>
 					|   // sally.js will place a 'click' event trigger automatically on the button below.
 					|   &lt;button type='submit'>Submit&lt;/button>
 					| &lt;/form>
+					| ...
+					| ...
+					| ...
+					| // To implement recaptcha you need a Google Recaptcha API javascript below.
+					| &lt;script src='https://www.google.com/recaptcha/api.js'>&lt;/script>
 				.example
 					h2
 						small.muted Example
 					.example-con
-						form(name='contactForm' method='post' post-contact data-to='ohpyupi@gmail.com' data-url='sallyjs.herokuapp.com' novalidate)
+						form(name='contactForm' post-contact data-to='ohpyupi@gmail.com' data-url='sallyjs.herokuapp.com' novalidate)
 							.row
 								div(role='alert' style='display: none').sent-notification.alert
 									p
@@ -103,6 +110,10 @@ html(lang='en' ng-app='MainModule')
 								label.col-xs-2.col-form-label Message
 								.col-xs-10
 									textarea(placeholder='Zoozler is just for you.' type='text' name='message' required).form-control
+
+							.bumper
+							div(data-sitekey='6LfFtQgUAAAAAFJaDZ0AYhHWyjmw7g467Yqzoara').g-recaptcha
+							.bumper
 							button(type='submit').btn.btn-primary.form-control Submit
 									// vitalizeForm() ending
 		// zoozlerfy() starting
@@ -139,3 +150,4 @@ html(lang='en' ng-app='MainModule')
 		script(src='bower_components/less/dist/less.min.js')
 		script(src='js/sally.js')
 		script(src='js/ngApp.js')
+		script(src="https://www.google.com/recaptcha/api.js")
