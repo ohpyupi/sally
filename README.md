@@ -1,24 +1,27 @@
-#Sally
- It is a private development package that includes a variety of tools that I use frequently.
+#sally.js - [sallyjs.herokuapp.com](http://sallyjs.herokuapp.com/)
+Sally.js is a development tool as an angular module for Zoozler's developers. This tool is to save developers' time and avoid tedious and repeated tasks at each development.
+
+To utilize sally, you need to install first angularjs and jquery.
+```
+bower install angular --save
+bower install jquery --save
+bower install sally --save
+```
+At your main angular moudule, inject sally dependency like below.
+```
+// path-to-main-module/ngApp.js
+var app = angular.module('YourMainModule', ['sally']);
+
+// in your html file
+<script src='path-to-jquery/jquery.min.js'><script>
+<script src='path-to-angularjs/angularjs.min.js'><script>
+<script src='path-to-sally/sally.js'><script>
+```
+See the document [sallyjs.herokuapp.com](http://sallyjs.herokuapp.com/)
+ 
  
 ## Zoozlerfy
-It will add Zoozler's copyright text with (1) gradient colors on Zoozler, (2) automatically updated current year, and (3) link to terms of service of Zoozler.
+Zoozler's brand logo has an awesome gradient colors on it. To implement it on each website, especially in copyright, it is very tedious to write html and css. This module will take care of it and automatically put gradient colors on Zoozler.
 
-```
-<body>
-
-...
-
-<footer>
- <h1 id='target'></h1>
-</footer>
-<script src='bower_compoenents/sally/dist/js/jquery.min.js'></script>
-<script src='bower_compoenents/sally/dist/js/zoozle.js'></script>
-<script>
-  $('#target').zoozlerfy();
-</script>
-</body>
-```
-
-![alt text](http://res.cloudinary.com/zoozler/image/upload/v1474311625/zoozler-copyright_imgxlp.png "Example of Zoozlerfy()")
-
+## postContact
+Most websites need contact form. It's not difficult but takes time. To use time efficiently, I have built Zoozler Mail API. Thus, every website, instead of having independent back-end for contact form function, will just send request to let Zoozler Mail API will take care of contact-form function. 
