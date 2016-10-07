@@ -7,77 +7,117 @@ html(lang='en' ng-app='MainModule')
 	body
 		section.container-fluid.jumbotron
 			.col-xs-6.col-xs-offset-3
-			h1.text-center Sally.js
+			h1.text-center sally.js
+			h3.text-center 
+				span(zoozlerfy data-copyright='false') Zoozler 
+				|  Development Tool
 			p.text-center https://github.com/ohpyupi/sally
 		// jumbotron ending
 		section.container
 			.col-xs-10.col-xs-offset-1
 				h1.display-1 #0 Installation
 				hr
-				p  The easiest way of dowloading and installing Sally is to use
+				p Sally.js is an angular.js module. Once you install the package, you need to install angular.js and jquery. After installation, inject sally.js module to you main angularJS module. Check the following. The easiest way of dowloading and installing Sally is to use
 					a(href='http://bower.io/' target='_blank')	Bower Package Manager.
-					br
-					| After then, place &lt;script> tag linked to sally.js to your html files. 
+				.bumper
 				pre
-					code 
-					| bower install sally --save
+					code //Install prerequsite packages.
 					br
-					| &lt;script src='bower_components/sally/dist/js/sally.js'>&lt;/script>
+					| bower install jquery --save // Install jquery
+					| bower install angular --save // Install angular.js
+					| bower install sally --save // Install sally.js
+					.bumper
+					| //In your main module ngApp.js
+					| var app = angular.module('YourMainModule', ['sally']);
+					.bumper
+					| //In your html file...
+					| &lt;script src='bower_components/jquery/dist/jquery.min.js'>&lt;/script> // jquery
+					| &lt;script src='bower_components/angular/angular.min.js'>&lt;/script> // angular.js
+					| &lt;script src='bower_components/sally/dist/js/sally.js'>&lt;/script> // sally.js
+					| &lt;script src='path-to-your-main-angular-module/ngApp.js'>&lt;/script> // sally.js
 		section.container
 			.col-xs-10.col-xs-offset-1
 				h1.display-1 
 					| #1 Contact Form
-					small.muted  - vitalizeForm();
+					small.muted  - post-contact
+				hr
 				p One of the most basic functionality of most websites is the contact form functionality. To do that, we have to set up back-end to each websites we build. To avoid repeated set-up for contact form, I made 
 					a(href='http://zoozler.com' target='_blank') zoozler.com 
 					| as an API. So that any websites Zoozler built can communicate with the API and provide all functionality for contact form.
-				hr
+				.bumper
+				pre
+					code. 
+					| // In your css file.
+					| .alert-danger {
+					|   // stiyle goes here if a form in invalid.  
+					| }
+					| .alert-success {
+					|   // stiyle goes here if a form in valid.  
+					| }
+					.bumper
+					| // In your html file.
+					| &lt;form post-contact data-to='destination-email' data-url='departure-url' novalidate>
+					|   // Notification box to confirm the form
+					|   &lt;div style='display: none' class='sent-notification'>&lt;/div>
+					|   // name tags should follow the following.
+					|   &lt;input name='name' type='text' required>&lt;/input>
+					|   // Only if email passes internal validation process, the contact will proceed.
+					|   &lt;input name='email' type='text' required>&lt;/input>
+					|   &lt;input name='phone' >&lt;/input>
+					|   &lt;textarea name='message' type='text' required>&lt;/textarea>
+					|   // sally.js will place a 'click' event trigger automatically on the button below.
+					|   &lt;button type='submit'>Submit&lt;/button>
+					| &lt;/form>
 				.example
 					h2
 						small.muted Example
 					.example-con
 						form(name='contactForm' method='post' post-contact data-to='ohpyupi@gmail.com' data-url='sallyjs.herokuapp.com' novalidate)
 							.row
-								div(role='alert').sent-notification.alert.alert-danger
+								div(role='alert' style='display: none').sent-notification.alert
 									p
-										strong To submit please fill out the form.
+										strong
 							.form-group.row
 								label.col-xs-2.col-form-label Name
 								.col-xs-10
-									input(placeholder='Paul Powers' name='name' required).form-control
+									input(placeholder='Paul Powers' type='text' name='name' required).form-control
 							.form-group.row
 								label.col-xs-2.col-form-label E-mail
 								.col-xs-10
-									input(placeholder='ppowers@zoozler.com' name='email' ng-pattern='emailPattern' required).form-control
+									input(placeholder='ppowers@zoozler.com' type='text' name='email' required).form-control
 							.form-group.row
-								label.col-xs-2.col-form-label Phone
+								label.col-xs-2.col-form-label Phone (optional)
 								.col-xs-10
 									input(placeholder='513-123-1234' name='phone').form-control
 
 							.form-group.row
 								label.col-xs-2.col-form-label Message
 								.col-xs-10
-									textarea(placeholder='Zoozler is just for you.' name='message' required).form-control
-							button(type='submit' ng-show='contactForm.$valid').btn.btn-primary.form-control Submit
+									textarea(placeholder='Zoozler is just for you.' type='text' name='message' required).form-control
+							button(type='submit').btn.btn-primary.form-control Submit
 									// vitalizeForm() ending
-							{{contactForm.$valid}}
 		// zoozlerfy() starting
 		section.container
 			.col-xs-10.col-xs-offset-1
 				h1.display-1 
 					| #2 Copyright
-					small.muted  - zoozlerfy();
+					small.muted  - zoozlerfy
 				hr
 				p Personally, I use gradient colors (red to yellow) to decorate Zoozler's copyright. This work can be boring and annoyting. I made a code snippet that will automatically put gradient color decoration and current year of a date.
+				.bumper
 				pre
 					code
 						| // At your html file (index.html)
+						| &lt;h1 zoozlerfy>Here will be copyright&lt;h2>
 						| &lt;h2 zoozlerfy>Here will be copyright&lt;h2>
+						| &lt;h3 zoozlerfy>Here will be copyright&lt;h2>
 				.example
 					h2
 						small.muted Example
 					.example-con
-						h3(zoozlerfy).text-center Here is Zoozler
+						h1(zoozlerfy data-copyright='true').text-center Here is Zoozler
+						h2(zoozlerfy data-copyright='true').text-center Here is Zoozler
+						h3(zoozlerfy data-copyright='true').text-center Here is Zoozler
 		// zoozlerfy() ending
 		script(src='dist/js/jquery.min.js')
 		script(src='bower_components/angular/angular.min.js')
