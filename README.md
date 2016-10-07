@@ -16,6 +16,7 @@ var app = angular.module('YourMainModule', ['sally']);
 <script src='path-to-jquery/jquery.min.js'><script>
 <script src='path-to-angularjs/angularjs.min.js'><script>
 <script src='path-to-sally/sally.js'><script>
+<script src='path-to-your-main-module/ngApp.js'><script>
 ```
 See the document [sallyjs.herokuapp.com](http://sallyjs.herokuapp.com/)
  
