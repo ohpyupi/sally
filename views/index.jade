@@ -30,12 +30,20 @@ html(lang='en' ng-app='MainModule')
 					.bumper
 					| //In your main module ngApp.js
 					| var app = angular.module('YourMainModule', ['sally']);
+					| ... 
+					| ... 
+					| ... 
 					.bumper
 					| //In your html file...
+					| &lt;html ng-app='YourMainModule'>
+					| ...
+					| ...
+					| ...
 					| &lt;script src='bower_components/jquery/dist/jquery.min.js'>&lt;/script> // jquery
 					| &lt;script src='bower_components/angular/angular.min.js'>&lt;/script> // angular.js
 					| &lt;script src='bower_components/sally/dist/js/sally.js'>&lt;/script> // sally.js
-					| &lt;script src='path-to-your-main-angular-module/ngApp.js'>&lt;/script> // sally.js
+					| &lt;script src='path-to-your-main-angular-module/ngApp.js'>&lt;/script> // ngApp.js
+					| &lt;/html>
 		section.container
 			.col-xs-10.col-xs-offset-1
 				h1.display-1 
@@ -109,9 +117,12 @@ html(lang='en' ng-app='MainModule')
 				pre
 					code
 						| // At your html file (index.html)
-						| &lt;h1 zoozlerfy>Here will be copyright&lt;h2>
-						| &lt;h2 zoozlerfy>Here will be copyright&lt;h2>
-						| &lt;h3 zoozlerfy>Here will be copyright&lt;h2>
+						| &lt;h1 zoozlerfy data-copyright='true'>Here will be copyright&lt;h2>
+						| &lt;h2 zoozlerfy data-copyright='true'>Here will be copyright&lt;h2>
+						| &lt;h3 zoozlerfy data-copyright='true'>Here will be copyright&lt;h2>
+						| &lt;h1 zoozlerfy data-copyright='false'>Here will be copyright&lt;h2>
+						| &lt;h2 zoozlerfy data-copyright='false'>Here will be copyright&lt;h2>
+						| &lt;h3 zoozlerfy data-copyright='false'>Here will be copyright&lt;h2>
 				.example
 					h2
 						small.muted Example
@@ -119,6 +130,9 @@ html(lang='en' ng-app='MainModule')
 						h1(zoozlerfy data-copyright='true').text-center Here is Zoozler
 						h2(zoozlerfy data-copyright='true').text-center Here is Zoozler
 						h3(zoozlerfy data-copyright='true').text-center Here is Zoozler
+						h1(zoozlerfy data-copyright='false').text-center Here is Zoozler
+						h2(zoozlerfy data-copyright='false').text-center Here is Zoozler
+						h3(zoozlerfy data-copyright='false').text-center Here is Zoozler
 		// zoozlerfy() ending
 		script(src='bower_components/jquery/dist/jquery.min.js')
 		script(src='bower_components/angular/angular.min.js')
