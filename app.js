@@ -4,7 +4,7 @@ var app = express();
 var bodyParser = require('body-parser');
 
 app.set('view engine', 'jade');
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use(bodyParser.urlencoded({ extended: true  }));
 app.use(bodyParser.json());
