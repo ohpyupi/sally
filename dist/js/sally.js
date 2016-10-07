@@ -37,16 +37,14 @@ app.directive('postContact', ['$http', function ($http) {
 				data.to = attrs['to'];
 				// Specify homsepage url email with data-to attribute
 				data.url = attrs['url']
-				// Specify the origin's nickname.
-				data.nick = attrs['nick'];
 				// Recording the curren date
 				let date = new Date();
 				data.date = date.toDateString();
 				// Recording sitekey to identify
 				data.sitekey = $(ele).find('.g-recaptcha').attr('data-sitekey');
 				// Recaptcha response
-				data.grec = grecaptcha.getResponse();
-				let valid = isEmail(data.email) && data.name && data.message && data.grec;
+				let valid = isEmail(data.email) && data.name && data.message && data['g-recaptcha-response'];
+				console.log(data);
 				if (valid) {
 					return $http.post('http://www.zoozler.com/contact-sent', data)
 						.success(function(res) {
