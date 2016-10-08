@@ -41,7 +41,7 @@ app.directive('postContact', ['$http', function ($http) {
 				let date = new Date();
 				data.date = date.toDateString();
 				// Recording sitekey to identify
-				data.sitekey = $(ele).find('.g-recaptcha').attr('data-sitekey');
+				data.siteKey = $(ele).find('.g-recaptcha').attr('data-sitekey');
 				// Recaptcha response
 				let valid = isEmail(data.email) && data.name && data.message && data['g-recaptcha-response'];
 				console.log(data);
