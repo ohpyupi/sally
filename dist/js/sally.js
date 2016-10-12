@@ -50,18 +50,27 @@ app.directive('postContact', ['$http', function ($http) {
 						.success(function(res) {
 							// notification-box will confirm the success.
 							notiBox.fadeIn(function () {
-								$(this).removeClass('alert-danger');
-								$(this).addClass('alert-success');
-								$(this).text('Successfully sent!');
-								$(ele).each(function () {
-									this.reset();
-								});
+								if (res[0] === "missing-input-secret") {
+									$(this).removeClass('alert-success');
+									$(this).addClass('alert-danger');
+									$(this).text('Your sitekey is not registered in Zoozler API');
+								} else {
+									$(this).removeClass('alert-danger');
+									$(this).addClass('alert-success');
+									$(this).text('Successfully sent!');
+									$(ele).each(function () {
+										this.reset();
+									});
+								}
+								alert(res[0]);
 								console.log(res);
 							});
 						}).error(function(err) {
-							$(this).removeClass('alert-success');
-							$(this).addClass('alert-danger');
-							$(this).text('Sorry, Zoozler API currently not working. Please consult with admin.');
+							notiBox.fadeIn(function () {
+								$(this).removeClass('alert-success');
+								$(this).addClass('alert-danger');
+								$(this).text('Sorry, Zoozler API currently not working. Please consult with admin.');
+							});
 							console.log(err.status);
 					});
 				} else {
@@ -76,6 +85,24 @@ app.directive('postContact', ['$http', function ($http) {
 		}
 	};
 }]);
+
+app.directive('youtubeHelper', function () {
+	return {
+		restrict: 'A',
+		link: function (scope, ele, attrs) {
+			let id = attrs['id'];
+			$(ele).append("<img class='youtube-thumb' src='https://img.youtube.com/vi/" + id + "/hqdefault.jpg'<div class='play-button'></div>");
+			let iframe = $('<iframe>')
+			iframe.attr('src', 'https://www.youtube.com/embed/' + id + '?autoplay=1&autohide=2&border=1&wmode=opaque&enablejsapi=1&controls=1&showinfo=1');
+			iframe.attr('frameborder', '0');
+			iframe.attr('allowFullScreen', true);
+			iframe.attr('id', 'youtube-iframe');
+			$(ele).on('click', function () {
+				$(this).children().replaceWith(iframe);
+			});
+		},
+	};
+});
 
 })();
 
