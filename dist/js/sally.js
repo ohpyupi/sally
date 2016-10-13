@@ -91,14 +91,19 @@ app.directive('youtubeHelper', function () {
 		restrict: 'A',
 		link: function (scope, ele, attrs) {
 			let id = attrs['id'];
-			$(ele).append("<img class='youtube-thumb' src='https://img.youtube.com/vi/" + id + "/hqdefault.jpg'<div class='play-button'></div>");
-			let iframe = $('<iframe>')
+			$(ele).append("<img class='youtube-thumb' src='https://img.youtube.com/vi/" + id + "/hqdefault.jpg'><div class='youtube-play-btn'></div>");
+			let iframe = $('<iframe data-youtubeId="' + id + '">')
 			iframe.attr('src', 'https://www.youtube.com/embed/' + id + '?autoplay=1&autohide=2&border=1&wmode=opaque&enablejsapi=1&controls=1&showinfo=1');
 			iframe.attr('frameborder', '0');
 			iframe.attr('allowFullScreen', true);
 			iframe.attr('id', 'youtube-iframe');
-			$(ele).on('click', function () {
-				$(this).children().replaceWith(iframe);
+			$(ele).children('.youtube-play-btn').on('click', function () {
+				$(this).hide();
+				$(ele).addClass('youtube-loading');
+				$(ele).children('img').replaceWith(iframe);
+				$(iframe).on('load', function () {
+					$(ele).removeClass('youtube-loading');
+				});
 			});
 		},
 	};
