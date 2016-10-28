@@ -1,0 +1,72 @@
+section.container
+	.col-sm-10.col-sm-offset-1
+		h1.display-1 
+			| #1 Contact Form
+			small.muted  - postContact
+		hr
+		p One of the most basic functionality of most websites is the contact form functionality. To do that, we have to set up back-end to each websites we build. To avoid repeated set-up for contact form, I made 
+			a(href='http://zoozler.com' target='_blank') zoozler.com 
+			| as an API. So that any websites Zoozler built can communicate with the API and provide all functionality for contact form.
+		.bumper
+		pre
+			code. 
+			| // In your css file.
+			| .alert-danger {
+			|   // stiyle goes here if a form in invalid.  
+			| }
+			| .alert-success {
+			|   // stiyle goes here if a form in valid.  
+			| }
+			.bumper
+			| // In your html file.
+			| &lt;form post-contact data-to='destination-email' data-url='departure-url' novalidate>
+			|   // Notification box to confirm the form
+			|   &lt;div style='display: none' class='sent-notification'>&lt;/div>
+			|   // name tags should follow the following.
+			|   &lt;input name='name' type='text' required>&lt;/input>
+			|   // Only if email passes internal validation process, the contact will proceed.
+			|   &lt;input name='email' type='text' required>&lt;/input>
+			|   &lt;input name='phone' >&lt;/input>
+			|   &lt;textarea name='message' type='text' required>&lt;/textarea>
+			|   // Google Recaptcha Validation Form 
+			|   &lt;div class='g-recaptcha' data-sitekey='authorized-sitekey-from-google'>&lt;/div>
+			|   // sally.js will place a 'click' event trigger automatically on the button below.
+			|   &lt;button type='submit'>Submit&lt;/button>
+			| &lt;/form>
+			| ...
+			| ...
+			| ...
+			| // To implement recaptcha you need a Google Recaptcha API javascript below.
+			| &lt;script src='https://www.google.com/recaptcha/api.js'>&lt;/script>
+		.example
+			h2
+				small.muted Example
+			.example-con
+				form(name='contactForm' post-contact data-to='ohpyupi@gmail.com' data-url='sallyjs.herokuapp.com' novalidate)
+					.row
+						div(role='alert' style='display: none').sent-notification.alert
+							p
+								strong
+					.form-group.row
+						label.col-xs-2.col-form-label Name
+						.col-xs-10
+							input(placeholder='Sally Grandma' type='text' name='name' required).form-control
+					.form-group.row
+						label.col-xs-2.col-form-label E-mail
+						.col-xs-10
+							input(placeholder='sallygrandma@gmail.com' type='text' name='email' required).form-control
+					.form-group.row
+						label.col-xs-2.col-form-label Phone (optional)
+						.col-xs-10
+							input(placeholder='513-123-1234' name='phone').form-control
+					.form-group.row
+						label.col-xs-2.col-form-label Message
+						.col-xs-10
+							textarea(placeholder='Send your sitekey and secretkey to admin to use contact form!' type='text' name='message' required).form-control
+					.bumper
+					div(data-sitekey='6LcPGAkUAAAAALxTBvPn4zo2zVgvIAdKzWUGhfCF').g-recaptcha
+					.bumper
+					button(type='submit').btn.btn-primary.form-control Submit
+script(async src="https://www.google.com/recaptcha/api.js")
+							// vitalizeForm() ending
+

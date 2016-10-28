@@ -1,0 +1,20 @@
+<section class="container"><div class="col-sm-10 col-sm-offset-1"><h1 class="display-1">#3 Youtube Links<small> - youtubeHelper</small></h1><hr/><p>Youtube is a very good resource when it comes to uploading videos and share the videos with a various forms of devices. However, the direct link of youtube iframe can slow down web browser's loading performance and harm user experience significantly. In this module, to avoide the slow performance, a thumbnail image for corresponding youtube videos will be uploaded first and will be replaced with the youtube video when users click it. In addition to it, CSS file also is included to achieve full-responsive youtube video, following <a href="https://coolestguidesontheplanet.com/videodrome/youtube/" target="_blank">the article.  </a></p><div class="bumper"></div><pre><code>// Load youtube-helper.min.css to acheive responsive youtube.
+&lt;link href='path-to-youtube-helper/youtube-helper.min.css'></link>
+... 
+... 
+... 
+&lt;div class='youtube-wrap'>
+  &lt;div class='youtube-con'>
+    // Places a corresponding youtube video ID at 'data-id' tag
+    // Please follow this <a href="https://www.youtube.com/watch?v=EKyirtVHsK0" target="_blank">link</a> if you don't know how to get the ID
+    &lt;div class='youtube-ele' youtube-helper data-id='youtube-id'>
+    &lt;/div>
+  &lt;/div>
+  ...
+  ...
+  ...
+&lt;/div>
+** Customization direction
+// To customize the play button, style '.youtube-play-btn'
+// Loading image is fired during loading youtubes. To customize the loading animation, insert a proper 'gif' animation file to 'background-image'. 
+// Please set up width value in percentile to '.youtube-con' to achieve responsive effect, such as 20%, 33.3%, or 50%. In this example, Bootstrap's grid system has been used.</code></pre><div class="example"><h2><small class="muted">Example</small></h2><div class="example-con"><div class="youtube-wrap"><div class="youtube-con col-lg-6"><div youtube-helper="youtube-helper" data-id="jDdKtWnFXFo" class="youtube-ele"></div></div><div class="youtube-con col-lg-6"><div youtube-helper="youtube-helper" data-id="DWrcGkegfTw" class="youtube-ele"></div></div><div class="youtube-con col-lg-6"><div youtube-helper="youtube-helper" data-id="CgIgBHQIi_s" class="youtube-ele"></div></div><div class="youtube-con col-lg-6"><div youtube-helper="youtube-helper" data-id="yxMq-EGvtaY" class="youtube-ele"></div></div><div class="youtube-con col-lg-6"><div youtube-helper="youtube-helper" data-id="nIcvnU9t7S0" class="youtube-ele"></div></div><div class="youtube-con col-lg-6"><div youtube-helper="youtube-helper" data-id="K2gYZza5coo" class="youtube-ele"></div></div></div></div></div></div></section>

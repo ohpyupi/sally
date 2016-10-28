@@ -1,0 +1,28 @@
+extends layout
+block styles
+block contents
+	body(ng-app='MyApp')
+		md-toolbar.bg-black
+			div(layout='column' layout-align='center center')
+				h1(ui-sref='home').color-brown sally.js
+				h3
+					span(zoozlerfy data-copyright='false') Zoozler 
+					|  Development Tool
+		div(layout='row' layout-fill flex).container
+			md-sidenav(md-is-locked-open='true').md-whiteframe-4dp
+				md-list
+					md-list-item
+						md-button(ui-sref='installation' flex) Installation
+					md-list-item
+						md-button(ui-sref='contact-form' flex) Contact Form
+					md-list-item
+						md-button(ui-sref='copyright' flex) Copyright
+					md-list-item
+						md-button(ui-sref='youtube' flex) Youtube
+					md-list-item
+						md-button(ui-sref='slideshow' flex) Responsive Slides
+			div(flex='90' flex-offset='5')
+				md-content(flex)#content
+					ui-view
+block scripts
+

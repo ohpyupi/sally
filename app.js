@@ -3,7 +3,7 @@ var path = require('path');
 var app = express();
 var bodyParser = require('body-parser');
 
-app.set('view engine', 'pug');
+app.set('view engine', 'jade');
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use(bodyParser.urlencoded({ extended: true  }));

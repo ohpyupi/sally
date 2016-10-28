@@ -1,6 +1,36 @@
 (function () {
-
+'use strict';
 var app = angular.module('sally', []);
+
+app.directive('slideHelper', [function () {
+	return {
+		restrict: 'A',
+		link: ($scope, ele, attrs) => {
+		$(document).ready(function () {
+			let $slides = $(ele).find('.slide-ele'),
+				length = $slides.length,
+				count = 0,
+				height = $slides.first().height(),
+				width = $slides.first().width();
+			$slides.height(height);
+			$slides.fadeOut(1);
+			let $current = $([]);
+			$current.push($slides.eq(0));
+			$current.push($slides.eq(1));
+			$current.each(function(i, value) {
+				value.fadeIn(1);
+			});
+			let $slideCons = $slides.parent();
+			$slides.on('click', function () {
+				$current.css({
+					'transform': `translateX(-${width}px)`
+				});
+				$slides.eq(2).fadeIn(300);
+			});
+		});
+		},
+	};
+}]);
 
 app.directive('zoozlerfy', [function () {
 	return {

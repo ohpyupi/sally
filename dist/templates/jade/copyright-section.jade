@@ -1,0 +1,29 @@
+// zoozlerfy() starting
+section.container
+	.col-sm-10.col-sm-offset-1
+		h1.display-1 
+			| #2 Copyright
+			small.muted  - zoozlerfy
+		hr
+		p Personally, I use gradient colors (red to yellow) to decorate Zoozler's copyright. This work can be boring and annoyting. I made a code snippet that will automatically put gradient color decoration and current year of a date.
+		.bumper
+		pre
+			code
+				| // At your html file (index.html)
+				| &lt;h1 zoozlerfy data-copyright='true'>Here will be copyright&lt;h2>
+				| &lt;h2 zoozlerfy data-copyright='true'>Here will be copyright&lt;h2>
+				| &lt;h3 zoozlerfy data-copyright='true'>Here will be copyright&lt;h2>
+				| &lt;h1 zoozlerfy data-copyright='false'>Here will be copyright&lt;h2>
+				| &lt;h2 zoozlerfy data-copyright='false'>Here will be copyright&lt;h2>
+				| &lt;h3 zoozlerfy data-copyright='false'>Here will be copyright&lt;h2>
+		.example
+			h2
+				small.muted Example
+			.example-con
+				h1(zoozlerfy data-copyright='true').text-center Here is Zoozler
+				h2(zoozlerfy data-copyright='true').text-center Here is Zoozler
+				h3(zoozlerfy data-copyright='true').text-center Here is Zoozler
+				h1(zoozlerfy data-copyright='false').text-center Here is Zoozler
+				h2(zoozlerfy data-copyright='false').text-center Here is Zoozler
+				h3(zoozlerfy data-copyright='false').text-center Here is Zoozler
+
