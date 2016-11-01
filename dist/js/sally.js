@@ -6,27 +6,101 @@ app.directive('slideHelper', [function () {
 	return {
 		restrict: 'A',
 		link: ($scope, ele, attrs) => {
-		$(document).ready(function () {
-			let $slides = $(ele).find('.slide-ele'),
+		$(document).ready(()=>{
+			let $ele = $(ele),
+				$con = $ele.find('.slide-con'),
+				$slides = $ele.find('.slide-ele'),
 				length = $slides.length,
-				count = 0,
-				height = $slides.first().height(),
-				width = $slides.first().width();
-			$slides.height(height);
-			$slides.fadeOut(1);
-			let $current = $([]);
-			$current.push($slides.eq(0));
-			$current.push($slides.eq(1));
-			$current.each(function(i, value) {
-				value.fadeIn(1);
+				btnArr = [],
+				arrArr = [],
+				_currentIndex = 0,
+				_timeout,
+				period = parseInt(attrs['period']);
+			// variables
+			let $arr = $('<span class="arr-left"><i class="icons"></i></span><span class="arr-right"><i class="icons"></i></span>');
+			$arr.appendTo($ele.find('.arr-con'));
+			let $arrLeft = $('.arr-left'),
+				$arrRight = $('.arr-right');
+			$arrLeft.on('click', function (e) {
+				if (_currentIndex > 0) {
+					$(this).css({
+						'display': 'block',
+					});
+					move(_currentIndex-1);
+				} else {
+					e.preventDefault;
+					return;
+				}
 			});
-			let $slideCons = $slides.parent();
-			$slides.on('click', function () {
-				$current.css({
-					'transform': `translateX(-${width}px)`
+			$arrRight.on('click', function (e) {
+				if (_currentIndex < length-1) {
+					moveRight(_currentIndex+1);
+				} else {
+					e.preventDefault();
+					return;
+				}
+			});
+			$.each($slides, (index)=>{
+				let $button = $('<span type="button" class="btn-slide">&bull;</span>');
+				if (index === _currentIndex) {
+					$button.addClass('active');
+				}
+				$button.on('click', ()=>{
+					move(index);
+				}).appendTo($ele.find('.btn-con'));
+				btnArr.push($button);
+			});
+			advance(); // Initialization done, fire!
+			function move(newIndex) {
+				let animateLeft,
+					slideLeft;
+				advance();
+				if ($con.is(':animated') || newIndex === _currentIndex) {
+					return;
+				}
+				btnArr[_currentIndex].removeClass('active');
+				btnArr[newIndex].addClass('active');
+				if (newIndex > _currentIndex) {
+					slideLeft = '100%';
+					animateLeft = '-100%';
+				} else {
+					slideLeft = '-100%';
+					animateLeft = '100%';
+				}
+				$slides.eq(newIndex).css({
+					'left': slideLeft,
+					'display': 'block'
 				});
-				$slides.eq(2).fadeIn(300);
-			});
+				$con.animate({
+					'left': animateLeft
+				}, function() {
+					$slides.eq(_currentIndex).css({
+						'display': 'none'
+					});
+					$slides.eq(newIndex).css({
+						'left': '0'
+					});
+					$con.css({
+						'left': '0'
+					});
+					_currentIndex = newIndex;
+				});
+			} // move(newIndex);
+			function moveRight(newIndex) {
+				move(newIndex);
+			} // moveRight(newIndex);
+			function moveLeft(newIndex) {
+			} // moveLeft(newIndex);
+			function advance() {
+				clearTimeout(_timeout);
+				_timeout = setTimeout(()=>{
+					if (_currentIndex < length-1) {
+						move(_currentIndex+1);
+					} else {
+						move(0);
+					}
+				}, period);
+			} // advance();
 		});
 		},
 	};

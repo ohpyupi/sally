@@ -1,0 +1,118 @@
+@import url(variables.less);
+@primary = #fff;
+
+.slide-wrap {
+	width: 640px;
+	height: 425px;
+	position: relative;
+	overflow: hidden;
+	.slide-con {
+		position: relative;
+		width: 100%;
+		height: 100%;
+	}
+	.slide-ele {
+		position: absolute;
+		display: none;
+		width: 100%;
+		height: 100%;
+		.capt {
+			margin: 0 !important;
+			color: @white;
+			height: 60px;
+			line-height: 60px;
+			display: block;
+			position: absolute;
+			text-align: center;
+			z-index: 99;
+			background-color: fade(@black, 50%);
+			width: 100%;
+			&.capt-top {
+				top: 0;
+			}
+			&.capt-bottom {
+				bottom: 0;
+			}
+			h1, h2, h3, h4, h5, h6, p, span {
+				height: inherit;
+				line-height: inherit;
+				margin: 0;
+			}
+		}
+		img {
+			width: 100%;
+			height: 100%;
+		}
+		&:first-child {
+			display: block;
+		}
+	}
+	.btn-con {
+		position: absolute;
+		left: 50%;
+		transform: translate3d(-50%,0,0);
+		bottom: 0;
+		.btn-slide {
+			color: @white;
+			position: relative;
+			font-size: 50px;
+			height: 40px;
+			line-height: 40px;
+			display: inline-block;
+			letter-spacing: 15px; 
+			cursor: pointer;
+			transition: color .3s;
+			&:hover {
+				color: @black;
+			}
+		}
+	}
+	.arr-con {
+		.arr-left {
+			display: block;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			padding: 15px 10px;
+			border-radius: 0 10% 10% 0;
+			left: 0px;
+			i:before {
+				content: "keyboard_arrow_left";
+			}
+		}
+		.icons {
+			font-size: 40px;
+			line-height: ;
+			font-family: 'Material Icons';
+			font-weight: normal;
+			font-style: normal;
+			color: @white;
+			cursor: pointer;
+			transition: opacity .3s;
+			&:hover {
+				opacity: .3;
+			}
+		}
+		.arr-right {
+			display: block;
+			top: 50%;
+			transform: translateY(-50%);
+			position: absolute;
+			padding: 15px 10px;
+			border-radius: 10% 0 0 10%;
+			right: 0px;
+			i:before {
+				content: "keyboard_arrow_right";
+			}
+		}
+	}
+}
+.active {
+	color: @black !important;
+	transition: color .3s;
+	&:hover {
+		color: @white !important;
+	}
+}
+
+
