@@ -1,6 +1,22 @@
-@import url(variables.less);
+@import url(variables.less); 
 @import url(youtube-helper.less);
-@primary: #fff;
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: main, serif;
+}
+p, span, a {
+	font-family: sub, sans-serif;
+}
+a {
+	color: @primary;
+	text-decoration: none;
+	transition: color .2s;
+	font-weight: 500;
+	&:hover {
+		color: darken(@primary, 10%);
+	}
+}
+
 .bg-black {
 	background-color: @black !important;
 }
@@ -34,7 +50,27 @@ md-toolbar {
 	}
 }
 
+.instruction {
+	h1.display {
+		font-size: 50px;
+		letter-spacing: 3px;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+	p.desc {
+		font-size: 20px;
+	}
+	hr {
+		border: none;
+		border-bottom: 1px solid fade(@black, 20%);
+	}
+}
+
+
 #content {
+	padding-top: 50px;
+	padding-left: 50px;
+	padding-right: 50px;
 }
 
 .example {

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Julius+Sans+One|Merriweather');
 .youtube-con .youtube-ele {
   position: relative;
   padding-bottom: 56.25%;
@@ -33,6 +34,11 @@
   background-size: cover;
   background-position: center;
 }
+h1,
+h2,
+h3 {
+  font-family: Julius Sans One, serif;
+}
 .bg-black {
   background-color: #2D2B2C !important;
 }
@@ -53,6 +59,16 @@
 }
 md-toolbar h1 {
   cursor: pointer;
+}
+h1.display {
+  font-size: 50px;
+  letter-spacing: 50px;
+  margin-bottom: 0;
+}
+#content {
+  padding-top: 1%;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 .bumper {
   width: 100%;

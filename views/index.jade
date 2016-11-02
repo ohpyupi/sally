@@ -1,28 +1,27 @@
 extends layout
 block styles
 block contents
-	body(ng-app='MyApp' flex)
-		md-toolbar.bg-black
-			div(layout='column' layout-align='center center')
-				h1(ui-sref='home').color-brown Sally.js
-				h3
-					span(zoozlerfy data-copyright='false') Zoozler 
-					|  Development Tool
-		div(layout='row' layout-fill flex).container
-			md-sidenav(md-is-locked-open='true').md-whiteframe-4dp
-				md-list
-					md-list-item
-						md-button(ui-sref='installation' flex) Installation
-					md-list-item
-						md-button(ui-sref='contact-form' flex) Contact Form
-					md-list-item
-						md-button(ui-sref='copyright' flex) Copyright
-					md-list-item
-						md-button(ui-sref='youtube' flex) Youtube
-					md-list-item
-						md-button(ui-sref='slideshow' flex) Responsive Slides
-			div(flex='90' flex-offset='5')
-				md-content()#content
-					ui-view
+	md-toolbar(layout-align='center center').bg-black.md-padding
+		//h1 JS
+		h3
+			span(zoozlerfy data-copyright='false')
+			|  Development Tool
+	div(layout='row' flex).container
+		md-sidenav(md-is-locked-open='true').md-whiteframe-4dp
+			md-list
+				md-list-item
+					md-button(ui-sref='installation' flex) Installation
+				md-list-item
+					md-button(ui-sref='contact-form' flex) Contact Form
+				md-list-item
+					md-button(ui-sref='copyright' flex) Copyright
+				md-list-item
+					md-button(ui-sref='youtube' flex) Responsive Youtube
+				md-list-item
+					md-button(ui-sref='slideshow' flex) Responsive Slideshow
+		md-content(flex)#content
+			ui-view
 block scripts
+
+
 

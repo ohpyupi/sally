@@ -1,31 +1,44 @@
-section.container
-	.col-sm-10.col-sm-offset-1
-		h1.display-1 #0 Installation
-		hr
-		p Sally.js is an angular.js module. Once you install the package, you need to install angular.js and jquery. After installation, inject sally.js module to your main angularJS module. Check the following. The easiest way of dowloading and installing Sally is to use
-			a(href='http://bower.io/' target='_blank')  Bower Package Manager.
+section.instruction.container
+	h1.display Installation
+	hr
+	p.desc Sally.js is an angular.js module. Once you install the package, you need to install angular.js and jquery. After installation, inject sally.js module to your main angularJS module. Check the following. The easiest way of dowloading and installing Sally is to use 
+		a(href='http://bower.io/' target='_blank') Bower Package Manager
+		| .
+	.bumper
+	md-tabs(code-tab-helper).md-accent
+		md-tab#tab
+			md-tab-label HTML
+			md-tab-body
+				h1 Hello
+		md-tab#tab
+			md-tab-label CSS
+			md-tab-body
+				h2 Goodbye
+		md-tab#tab1
+			md-tab-label JS
+			md-tab-body
+				h3 ha
+	pre
+		code //Install prerequsite packages.
+		br
+		| bower install jquery --save // Install jquery
+		| bower install angular --save // Install angular.js
+		| bower install sally --save // Install sally.js
 		.bumper
-		pre
-			code //Install prerequsite packages.
-			br
-			| bower install jquery --save // Install jquery
-			| bower install angular --save // Install angular.js
-			| bower install sally --save // Install sally.js
-			.bumper
-			| //In your main module ngApp.js
-			| var app = angular.module('YourMainModule', ['sally']);
-			| ... 
-			| ... 
-			| ... 
-			.bumper
-			| //In your html file...
-			| &lt;html ng-app='YourMainModule'>
-			| ...
-			| ...
-			| ...
-			| &lt;script src='bower_components/jquery/dist/jquery.min.js'>&lt;/script> // jquery
-			| &lt;script src='bower_components/angular/angular.min.js'>&lt;/script> // angular.js
-			| &lt;script src='bower_components/sally/dist/js/sally.js'>&lt;/script> // sally.js
-			| &lt;script src='path-to-your-main-angular-module/ngApp.js'>&lt;/script> // ngApp.js
-			| &lt;/html>
+		| //In your main module ngApp.js
+		| var app = angular.module('YourMainModule', ['sally']);
+		| ... 
+		| ... 
+		| ... 
+		.bumper
+		| //In your html file...
+		| &lt;html ng-app='YourMainModule'>
+		| ...
+		| ...
+		| ...
+		| &lt;script src='bower_components/jquery/dist/jquery.min.js'>&lt;/script> // jquery
+		| &lt;script src='bower_components/angular/angular.min.js'>&lt;/script> // angular.js
+		| &lt;script src='bower_components/sally/dist/js/sally.js'>&lt;/script> // sally.js
+		| &lt;script src='path-to-your-main-angular-module/ngApp.js'>&lt;/script> // ngApp.js
+		| &lt;/html>
 

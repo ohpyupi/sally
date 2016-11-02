@@ -1,11 +1,12 @@
 'use strict';
-var gulp = require('gulp'),
-	cssmin = require('gulp-cssmin'),
-	rename = require('gulp-rename'),
-	less = require('gulp-less'),
-	jade = require('gulp-jade');
+var gulp = require('gulp');
+var cssmin = require('gulp-cssmin');
+var rename = require('gulp-rename');
+var less = require('gulp-less');
+var jade = require('gulp-jade');
+
 gulp.task('watch', function () {
-	gulp.watch('./dist/styles/less/**/*.less', ['less', 'less-pretty']);
+	gulp.watch('./dist/styles/less/**/*.less', ['less']);
 	gulp.watch('./dist/templates/jade/**/*.jade', ['jade']);
 });
 gulp.task('less', function () {
@@ -31,8 +32,9 @@ gulp.task('less-pretty', function () {
 		.pipe(gulp.dest('./dist/styles/css/'));
 });
 gulp.task('jade', function () {
-	gulp.src('./dist/templates/jade/**/*.jade')
+	return gulp.src('./dist/templates/jade/**/*.jade')
 		.pipe(jade())
 		.pipe(gulp.dest('./dist/templates'));
 });
-gulp.task('default', ['less', 'watch', 'less-pretty', 'jade']);
+
+gulp.task('default', ['less', 'watch', 'jade']);

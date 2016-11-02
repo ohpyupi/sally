@@ -1,7 +1,7 @@
 (function () {
 'use strict';
 let app = angular.module('MyApp', ['sally', 'sallyTemplates', 'ngMaterial', 'ui.router']);
-app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
 	$urlRouterProvider.otherwise('/');
 	$stateProvider
 		.state('home', {
@@ -28,5 +28,21 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 			url: '/slideshow',
 			templateUrl: 'templates/slideshow-section.html',
 		});
+		$locationProvider.hashPrefix('!');
+		$locationProvider.html5Mode({
+			enabled: true,
+			requireBase: true,
+			rewriteLinks: true
+		});
+}]);
+app.directive('codeTabHelper', function () {
+	return {
+		restrict: 'A',
+		link: ($scope, ele, attrs)=>{
+			$scope.data = {
+				selected: 0,
+			};
+		},
+	};
 });
 })();

@@ -1,4 +1,4 @@
-<section class="container"><div class="col-sm-10 col-sm-offset-1"><h1 class="display-1">#0 Installation</h1><hr/><p>Sally.js is an angular.js module. Once you install the package, you need to install angular.js and jquery. After installation, inject sally.js module to your main angularJS module. Check the following. The easiest way of dowloading and installing Sally is to use<a href="http://bower.io/" target="_blank"> Bower Package Manager.</a></p><div class="bumper"></div><pre><code>//Install prerequsite packages.</code><br/>bower install jquery --save // Install jquery
+<section class="instruction container"><h1 class="display">Installation</h1><hr/><p class="desc">Sally.js is an angular.js module. Once you install the package, you need to install angular.js and jquery. After installation, inject sally.js module to your main angularJS module. Check the following. The easiest way of dowloading and installing Sally is to use <a href="http://bower.io/" target="_blank">Bower Package Manager</a>.</p><div class="bumper"></div><md-tabs code-tab-helper="code-tab-helper" class="md-accent"><md-tab id="tab"><md-tab-label>HTML</md-tab-label><md-tab-body><h1>Hello</h1></md-tab-body></md-tab><md-tab id="tab"><md-tab-label>CSS</md-tab-label><md-tab-body><h2>Goodbye</h2></md-tab-body></md-tab><md-tab id="tab1"><md-tab-label>JS</md-tab-label><md-tab-body><h3>ha</h3></md-tab-body></md-tab></md-tabs><pre><code>//Install prerequsite packages.</code><br/>bower install jquery --save // Install jquery
 bower install angular --save // Install angular.js
 bower install sally --save // Install sally.js<div class="bumper"></div>//In your main module ngApp.js
 var app = angular.module('YourMainModule', ['sally']);
@@ -13,4 +13,4 @@ var app = angular.module('YourMainModule', ['sally']);
 &lt;script src='bower_components/angular/angular.min.js'>&lt;/script> // angular.js
 &lt;script src='bower_components/sally/dist/js/sally.js'>&lt;/script> // sally.js
 &lt;script src='path-to-your-main-angular-module/ngApp.js'>&lt;/script> // ngApp.js
-&lt;/html></pre></div></section>
+&lt;/html></pre></section>

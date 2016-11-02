@@ -1,6 +1,6 @@
 (function () {
 'use strict';
-var app = angular.module('sally', []);
+let app = angular.module('sally', []);
 
 app.directive('slideHelper', [function () {
 	return {
