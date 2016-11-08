@@ -6,7 +6,7 @@ var less = require('gulp-less');
 var jade = require('gulp-jade');
 
 gulp.task('watch', function () {
-	gulp.watch('./dist/styles/less/**/*.less', ['less']);
+	gulp.watch('./dist/styles/less/**/*.less', ['less', 'less-pretty']);
 	gulp.watch('./dist/templates/jade/**/*.jade', ['jade']);
 });
 gulp.task('less', function () {

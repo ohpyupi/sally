@@ -1,13 +1,13 @@
 (function () {
 'use strict';
-let app = angular.module('sally', []);
+var app = angular.module('sally', []);
 
 app.directive('slideHelper', [function () {
 	return {
 		restrict: 'A',
-		link: ($scope, ele, attrs) => {
-		$(document).ready(()=>{
-			let $ele = $(ele),
+		link: function ($scope, ele, attrs) {
+		$(document).ready(function () {
+			var $ele = $(ele),
 				$con = $ele.find('.slide-con'),
 				$slides = $ele.find('.slide-ele'),
 				length = $slides.length,
@@ -17,9 +17,9 @@ app.directive('slideHelper', [function () {
 				_timeout,
 				period = parseInt(attrs['period']);
 			// variables
-			let $arr = $('<span class="arr-left"><i class="icons"></i></span><span class="arr-right"><i class="icons"></i></span>');
+			var $arr = $('<span class="arr-left"><i class="icons"></i></span><span class="arr-right"><i class="icons"></i></span>');
 			$arr.appendTo($ele.find('.arr-con'));
-			let $arrLeft = $('.arr-left'),
+			var $arrLeft = $('.arr-left'),
 				$arrRight = $('.arr-right');
 			$arrLeft.on('click', function (e) {
 				if (_currentIndex > 0) {
@@ -40,20 +40,20 @@ app.directive('slideHelper', [function () {
 					return;
 				}
 			});
-			$.each($slides, (index)=>{
-				let $button = $('<span type="button" class="btn-slide">&bull;</span>');
+			$.each($slides, function (index) {
+				var $button = $('<span type="button" class="btn-slide">&bull;</span>');
 				if (index === _currentIndex) {
 					$button.addClass('active');
 				}
-				$button.on('click', ()=>{
+				$button.on('click', function () {
 					move(index);
 				}).appendTo($ele.find('.btn-con'));
 				btnArr.push($button);
 			});
 			advance(); // Initialization done, fire!
 			function move(newIndex) {
-				let animateLeft,
-					slideLeft;
+				var animateLeft;
+				var slideLeft;
 				advance();
 				if ($con.is(':animated') || newIndex === _currentIndex) {
 					return;
@@ -93,7 +93,7 @@ app.directive('slideHelper', [function () {
 			} // moveLeft(newIndex);
 			function advance() {
 				clearTimeout(_timeout);
-				_timeout = setTimeout(()=>{
+				_timeout = setTimeout(function () {
 					if (_currentIndex < length-1) {
 						move(_currentIndex+1);
 					} else {
@@ -110,11 +110,11 @@ app.directive('zoozlerfy', [function () {
 	return {
 		restrict: 'A',
 		link: function (scope, ele, attrs) {
-			let isCopyright = attrs['copyright'];
-			let content;
+			var isCopyright = attrs['copyright'];
+			var content;
 			if (isCopyright === 'true') {
-				let today = new Date();
-				let todayYear = today.getFullYear();
+				var today = new Date();
+				var todayYear = today.getFullYear();
 				content = "Copyright &copy " + todayYear + " <a href='http://www.zoozler.com' target='_blank'><span style='color:#BD091B;'>Zooz</span><span style='color:#F0592B;'>l</span><span style='color:#F59120;'>e</span><span style='color:#FAAD41;'>r</span></a> | " + "<a href='http://www.zoozler.com/terms-and-conditions' target='_blank'>Terms and Conditions</a>";
 				$(ele).html(content);
 			} else if (isCopyright === 'false') {
@@ -132,22 +132,22 @@ app.directive('postContact', ['$http', function ($http) {
 		restrict: 'A',
 		link: function (scope, ele, attrs) {
 			scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
-			let notiBox = $('.sent-notification');
-			let button = $(ele).find('button');
+			var notiBox = $('.sent-notification');
+			var button = $(ele).find('button');
 			button.on('click', function (e) {
 				e.preventDefault();
-				let data = $(ele).serializeObject();
+				var data = $(ele).serializeObject();
 				// Specify destination email with data-to attribute
 				data.to = attrs['to'];
 				// Specify homsepage url email with data-to attribute
 				data.url = attrs['url']
 				// Recording the curren date
-				let date = new Date();
+				var date = new Date();
 				data.date = date.toDateString();
 				// Recording sitekey to identify
 				data.siteKey = $(ele).find('.g-recaptcha').attr('data-sitekey');
 				// Recaptcha response
-				let valid = isEmail(data.email) && data.name && data.message && data['g-recaptcha-response'];
+				var valid = isEmail(data.email) && data.name && data.message && data['g-recaptcha-response'];
 				console.log(data);
 				if (valid) {
 					return $http.post('http://www.zoozler.com/contact-sent', data)
@@ -194,9 +194,9 @@ app.directive('youtubeHelper', function () {
 	return {
 		restrict: 'A',
 		link: function (scope, ele, attrs) {
-			let id = attrs['id'];
+			var id = attrs['id'];
 			$(ele).append("<img class='youtube-thumb' src='https://img.youtube.com/vi/" + id + "/hqdefault.jpg'><div class='youtube-play-btn'></div>");
-			let iframe = $('<iframe data-youtubeId="' + id + '">')
+			var iframe = $('<iframe data-youtubeId="' + id + '">')
 			iframe.attr('src', 'https://www.youtube.com/embed/' + id + '?autoplay=1&autohide=2&border=1&wmode=opaque&enablejsapi=1&controls=1&showinfo=1');
 			iframe.attr('frameborder', '0');
 			iframe.attr('allowFullScreen', true);
