@@ -1,47 +1,64 @@
 (function () {
 'use strict';
 let app = angular.module('MyApp', ['sally', 'sallyTemplates', 'ngMaterial', 'ui.router']);
-app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function ($stateProvider, $urlRouterProvider, $locationProvider) {
+
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$mdThemingProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $mdThemingProvider) {
 	$urlRouterProvider.otherwise('/');
 	$stateProvider
 		.state('home', {
 			url: '/',
-			templateUrl: 'templates/home.html'
+			templateUrl: 'templates/html/home.html'
 		})
 		.state('installation', {
 			url: '/installation',
-			templateUrl: 'templates/installation.html',
+			templateUrl: 'templates/html/installation.html',
 		})
 		.state('copyright', {
 			url: '/copyright',
-			templateUrl: 'templates/copyright-section.html',
+			templateUrl: 'templates/html/copyright-section.html',
 		})
 		.state('youtube', {
 			url: '/youtube',
-			templateUrl: 'templates/youtube-section.html',
+			templateUrl: 'templates/html/youtube-section.html',
 		})
 		.state('contact-form', {
 			url: '/contact-form',
-			templateUrl:'templates/contact-section.html',
+			templateUrl:'templates/html/contact-section.html',
 		})
 		.state('slideshow', {
 			url: '/slideshow',
-			templateUrl: 'templates/slideshow-section.html',
+			templateUrl: 'templates/html/slideshow-section.html',
 		});
-		$locationProvider.hashPrefix('!');
-		$locationProvider.html5Mode({
-			enabled: true,
-			requireBase: true,
-			rewriteLinks: true
+	$locationProvider.hashPrefix('!');
+	$locationProvider.html5Mode({
+		enabled: true,
+		requireBase: true,
+		rewriteLinks: true
+	});
+	$mdThemingProvider.theme('default')
+		.primaryPalette('grey', {
+			'default': '800',
+			'hue-1': '400',
+		})
+		.accentPalette('brown', {
+			'default': '700',
 		});
 }]);
-app.directive('codeTabHelper', function () {
+app.controller('GeneralCtrl', ['$scope', function ($scope) {
+// Just go!
+
+// When document ready
+$(document).ready(function () {
+});
+}]);
+app.directive('prismLoader', function () {
 	return {
 		restrict: 'A',
-		link: ($scope, ele, attrs)=>{
-			$scope.data = {
-				selected: 0,
-			};
+		link: function ($scope, ele, attrs) {
+			$(document).ready(function () {
+				var codes = $(ele).find('code');
+				Prism.highlightAll();
+			});
 		},
 	};
 });

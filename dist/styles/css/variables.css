@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'main';
+  src: url(/styles/fonts/JuliusSansOne-Regular.ttf);
+}
+@font-face {
+  font-family: 'sub';
+  src: url(/styles/fonts/DidactGothic.ttf);
+}

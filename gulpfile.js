@@ -7,7 +7,7 @@ var jade = require('gulp-jade');
 
 gulp.task('watch', function () {
 	gulp.watch('./dist/styles/less/**/*.less', ['less', 'less-pretty']);
-	gulp.watch('./dist/templates/jade/**/*.jade', ['jade']);
+	gulp.watch('./dist/templates/**/*.jade', ['jade']);
 });
 gulp.task('less', function () {
 	// place code for your default task here.
@@ -32,9 +32,9 @@ gulp.task('less-pretty', function () {
 		.pipe(gulp.dest('./dist/styles/css/'));
 });
 gulp.task('jade', function () {
-	return gulp.src('./dist/templates/jade/**/*.jade')
+	return gulp.src('./dist/templates/**/*.jade')
 		.pipe(jade())
-		.pipe(gulp.dest('./dist/templates'));
+		.pipe(gulp.dest('./dist/templates/html'));
 });
 
-gulp.task('default', ['less', 'watch', 'jade']);
+gulp.task('default', ['less', 'less-pretty', 'watch', 'jade']);

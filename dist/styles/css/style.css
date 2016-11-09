@@ -1,4 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Julius+Sans+One|Merriweather');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+@font-face {
+  font-family: 'main';
+  src: url(/styles/fonts/JuliusSansOne-Regular.ttf);
+}
+@font-face {
+  font-family: 'sub';
+  src: url(/styles/fonts/DidactGothic.ttf);
+}
 .youtube-con .youtube-ele {
   position: relative;
   padding-bottom: 56.25%;
@@ -36,11 +44,35 @@
 }
 h1,
 h2,
-h3 {
-  font-family: Julius Sans One, serif;
+h3,
+h4,
+h5,
+h6 {
+  font-family: main, serif;
+}
+p,
+span,
+a {
+  font-family: sub, sans-serif;
+}
+code {
+  font-family: 'Ubuntu';
+  background: transparent !important;
+}
+a {
+  color: #337ab7;
+  text-decoration: none;
+  transition: color .2s;
+  font-weight: 500;
+}
+a:hover {
+  color: #285f8f;
 }
 .bg-black {
   background-color: #2D2B2C !important;
+}
+.color-grey {
+  color: #adaaac !important;
 }
 .bg-brown {
   background-color: #E5A05D !important;
@@ -60,15 +92,33 @@ h3 {
 md-toolbar h1 {
   cursor: pointer;
 }
-h1.display {
+md-tabs {
+  min-height: 400px !important;
+}
+md-tabs md-ink-bar {
+  height: 3px;
+  background: #E5A05D;
+}
+md-tab-content {
+  background-color: #2d2b2c;
+}
+.instruction h1.display {
   font-size: 50px;
-  letter-spacing: 50px;
+  letter-spacing: 3px;
+  margin-top: 0;
   margin-bottom: 0;
 }
+.instruction p.desc {
+  font-size: 20px;
+}
+.instruction hr {
+  border: none;
+  border-bottom: 1px solid rgba(45, 43, 44, 0.2);
+}
 #content {
-  padding-top: 1%;
-  padding-left: 5%;
-  padding-right: 5%;
+  padding-top: 50px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 .bumper {
   width: 100%;

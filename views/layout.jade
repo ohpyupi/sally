@@ -1,5 +1,5 @@
 doctype html
-html(lang='en' ng-app='MyApp')
+html(lang='en' ng-app='MyApp' ng-controller='GeneralCtrl' ng-cloak)
 	head
 		base(href='/')
 		title Sally
@@ -8,11 +8,13 @@ html(lang='en' ng-app='MyApp')
 		link(href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet')
 		link(href='/styles/css/sally.min.css' rel='stylesheet')
 		link(href='/styles/css/style.min.css' rel='stylesheet')
+		link(href='/bower_components/prism/themes/prism-okaidia.css' rel='stylesheet')
 		block styles
 	body(layout='column')
 		block contents
 		script(src='/bower_components/jquery/dist/jquery.min.js')
 		script(src='/bower_components/angular/angular.min.js')
+		script(src='/bower_components/prism/prism.js')
 		script(src='/bower_components/angular-ui-router/release/angular-ui-router.min.js')
 		script(src='/bower_components/angular-aria/angular-aria.min.js')
 		script(src='/bower_components/angular-animate/angular-animate.min.js')

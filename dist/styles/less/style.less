@@ -1,11 +1,16 @@
 @import url(variables.less); 
 @import url(youtube-helper.less);
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
 h1, h2, h3, h4, h5, h6 {
 	font-family: main, serif;
 }
 p, span, a {
 	font-family: sub, sans-serif;
+}
+code {
+	font-family: 'Ubuntu';
+	background: transparent !important;
 }
 a {
 	color: @primary;
@@ -19,6 +24,10 @@ a {
 
 .bg-black {
 	background-color: @black !important;
+}
+
+.color-grey {
+	color: lighten(@black, 50%) !important;
 }
 
 .bg-brown {
@@ -47,6 +56,29 @@ html, body {
 md-toolbar {
 	h1 {
 		cursor: pointer;
+	}
+}
+
+md-tabs {
+	min-height: 400px !important;
+	& md-ink-bar {
+		height: 3px;
+		background: @brown;
+	}
+}
+
+md-tab-content {
+	background-color: lighten(@black, 0%);
+}
+
+pre {
+	code {
+		//display: block;
+		//border-bottom: 1px solid fade(@black, 6%);
+		//padding-bottom: 5px;
+		//margin-top: 7px;
+		//margin-bottom: 2px;
+		//color: @black;
 	}
 }
 
